@@ -24,14 +24,13 @@ Key columns:
 
 | Column                          | Meaning                                                        |
 |---------------------------------|----------------------------------------------------------------|
-| `区域到达率 λ/X`                 | Area arrival rate λ (0.05, 0.06, 0.07, 0.08)                   |
-| `层数 T`                        | Number of tiers (T = 15)                                       |
+| `区域到达率 λ/Z`                 | Area arrival rate of a zone (0.05, 0.06, 0.07, 0.08)                   |
+| `层数 T`                        | Number of tiers                                       |
 | `总巷道数量 M`                  | Total number of aisles                                         |
 | `货架储位数 N`                  | Number of storage locations per aisle (16, 20, 24)             |
 | `ps`                            | Load / service factor (1.0, 0.9, 0.8, 0.7)                     |
-| `Tr`, `ρ`                       | Analytical model results (response time and utilization)       |
-| `Queue4`, `same tier`, `different tier`, `Qs`, `combiner`, `bottom tier` | Simulation results under different queueing / routing configurations |
-| `tud`                           | Summary travel-distance metric                                 |
+| `Tr`                      | Analytical model results      |
+| `Queue4`, `same tier`, `different tier`, `Qs`, `combiner`, `bottom tier` | Simulation results from Flexsim |
 
 For each configuration, the simulation results are reported over **three repeated runs**, which appear as three adjacent blocks of the same set of columns.
 
