@@ -8,31 +8,62 @@ This repository provides the supplementary simulation-validation results for the
 
 The file [`GitHub validation results.xlsx`](<GitHub validation results.xlsx>) contains the **repeated-run results of the simulation validation experiments** reported in the paper.
 
-Owing to the space limitations of the manuscript, only a subset of the runs could be included in the paper. The workbook therefore presents **three repeated runs as a representative example** for each configuration.
+Owing to the space limitations of the manuscript, only a subset of the runs could be included in the paper. The workbook therefore presents **three repeated runs as a representative example** for each configuration, and compares the simulated throughput time against the corresponding analytical model.
 
 ## Data structure
 
-The workbook contains three sheets, one for each total number of aisles (*M*):
+The workbook contains three sheets, one for each total number of main aisles (*M*):
 
-| Sheet  | Total number of aisles (*M*) |
-|--------|------------------------------|
-| `M=9`  | 9                            |
-| `M=15` | 15                           |
-| `M=21` | 21                           |
+| Sheet  | Number of main aisles (*M*) |
+|--------|-----------------------------|
+| `M=9`  | 9                           |
+| `M=15` | 15                          |
+| `M=21` | 21                          |
 
-Key columns:
+Each sheet reports, for every combination of the input parameters, the analytical and simulated throughput time and their relative error, followed by three replications of the component-level results.
 
-| Column                          | Meaning                                                        |
-|---------------------------------|----------------------------------------------------------------|
-| `区域到达率 λ/Z`                 | Area arrival rate of a zone (0.05, 0.06, 0.07, 0.08)                   |
-| `层数 T`                        | Number of tiers                                       |
-| `总巷道数量 M`                  | Total number of aisles                                         |
-| `货架储位数 N`                  | Number of storage locations per aisle (16, 20, 24)             |
-| `ps`                            | Load / service factor (1.0, 0.9, 0.8, 0.7)                     |
-| `Tr`                      | Analytical model results      |
-| `Queue4`, `same tier`, `different tier`, `Qs`, `combiner`, `bottom tier` | Simulation results from Flexsim |
+### Input parameters
 
-For each configuration, the simulation results are reported over **three repeated runs**, which appear as three adjacent blocks of the same set of columns.
+| Column | Symbol | Meaning | Values |
+|--------|--------|---------|--------|
+| The number of main-aisle | *M* | Total number of main aisles | 9, 15, 21 (one per sheet) |
+| The order arrival rate | *λ* | Order arrival rate | 0.15, 0.18, 0.21, 0.24 |
+| The number of storage positions per tier | *N* | Number of storage positions per tier | 16, 20, 24 |
+| Assignment probability | *ps* | Assignment probability | 1.0, 0.9, 0.8, 0.7 |
+
+> Note: the `M=21` sheet does not include the `λ = 0.24` block, so it contains fewer configurations than the `M=9` and `M=15` sheets.
+
+### Throughput-time comparison
+
+| Column | Meaning |
+|--------|---------|
+| Throughput time (Tr) — Analytical results (A) | Throughput time computed by the analytical model |
+| Throughput time (Tr) — Simulation results (S) | Throughput time from the simulation, averaged over the three replications |
+| Relative error (ε) | Relative error between the analytical and simulated throughput time |
+
+### Replication columns
+
+For each of **Replication 1**, **Replication 2**, and **Replication 3**, the following six metrics are reported:
+
+1. Throughput time (Tr)
+2. Mean waiting time of orders for the same-tier shuttle service
+3. Mean service time of the same-tier shuttle
+4. Total mean service time of the cross-tier shuttle
+5. Mean waiting time of the shutters for the tote-lift
+6. Mean service time of the tote-lift loads a tote and transports it to the output point
+
+## Validation accuracy
+
+Across the 132 configurations reported in the workbook, the relative error between the analytical and simulated throughput time is:
+
+| Statistic | Value |
+|-----------|-------|
+| Mean | 1.6 % |
+| Median | 1.3 % |
+| 90th percentile | 2.9 % |
+| Maximum | 11.1 % |
+
+The simulated throughput time closely matches the analytical model, with the large majority of configurations within a few percent.
 
 ## Citation
 
